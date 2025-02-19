@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openemr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: openemr
+  template:
+    metadata:
+      labels:
+        app: openemr
+    spec:
+      initContainers:
+        - name: wait-for-mysql
+          image: busybox:1.28
+          command: ['sh', '-c', 'until nc -z mysql 3306; do echo "Waiting for MySQL..."; sleep 2; done;']
+      containers:
+        - name: openemr
+          image: openemr/openemr:latest
+          env:
+            - name: MYSQL_HOST
+              value: "mysql"
+            - name: MYSQL_DATABASE
+              value: "openemr"
+            - name: MYSQL_USER
+              value: "openemr"
+            - name: MYSQL_PASSWORD
+              value: "myuserpassword"
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: openemr
+spec:
+  type: NodePort
+  selector:
+    app: openemr
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30002
