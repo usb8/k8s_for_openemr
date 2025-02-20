@@ -1,5 +1,5 @@
 # PREREQUISITES:
-- Installed Docker, Kind, Kubetcl (Kubernetes)
+- Installation: `bash install_docker_kind_kubectl.sh`
 - Reference folder: docker/
 
 # HOW TO USE:
@@ -18,3 +18,4 @@ kubectl delete -f openemr-deployment.yaml
 kubectl delete -f mysql-deployment.yaml
 kind delete cluster --name cluster1
 ```
+- Link demo: http://209.38.207.159:30002
