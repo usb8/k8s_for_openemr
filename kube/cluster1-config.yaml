@@ -14,4 +14,16 @@ nodes:
       hostPort: 30003
       protocol: TCP
   - role: worker
+    # kubeadmConfigPatches:
+    # - |
+    #   kind: JoinConfiguration
+    #   nodeRegistration:
+    #     kubeletExtraArgs:
+    #       node-labels: "environment=production,app=worker1"
   - role: worker
+    # kubeadmConfigPatches:
+    # - |
+    #   kind: JoinConfiguration
+    #   nodeRegistration:
+    #     kubeletExtraArgs:
+    #       node-labels: "environment=production,app=worker2"
