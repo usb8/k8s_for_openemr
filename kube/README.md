@@ -12,6 +12,10 @@ cd production/manifests/
 kubectl apply -f mysql-deployment.yaml
 kubectl apply -f openemr-deployment.yaml # Open: localhost:30002 or 127.0.0.1:30002
 
+# Verify setup
+kubectl get nodes,all
+kubectl get nodes,all -o wide
+
 # Clean up if needed
 kubectl delete -f openemr-deployment.yaml
 kubectl delete -f mysql-deployment.yaml

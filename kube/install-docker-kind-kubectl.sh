@@ -52,3 +52,5 @@ kubectl version
 
 echo "Installation complete."
 newgrp docker
+
+# chmod +x install-docker-kind-kubectl.sh

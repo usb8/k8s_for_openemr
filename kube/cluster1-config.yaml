@@ -13,6 +13,13 @@ nodes:
     - containerPort: 30003
       hostPort: 30003
       protocol: TCP
+    # extraMounts:
+    # - hostPath: /root/k8s_for_openemr/kube/production/data/logvolume01
+    #   containerPath: /mnt/data/logvolume01
+    # - hostPath: /root/k8s_for_openemr/kube/production/data/sitevolume
+    #   containerPath: /mnt/data/sitevolume
+    # - hostPath: /root/k8s_for_openemr/kube/production/data/databasevolume
+    #   containerPath: /mnt/data/databasevolume
   - role: worker
     # kubeadmConfigPatches:
     # - |
